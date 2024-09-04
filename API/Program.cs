@@ -1,6 +1,7 @@
 using System.Text;
 using API.Data;
 using API.Interfaces;
+using API.Repositories;
 using API.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
@@ -31,6 +32,11 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
                 ValidateAudience = false
             };
         });
+ builder.Services.AddScoped<IUserRepository, UserRepository>();
+
+ builder.Services.AddScoped<IHeartRateRepository, HeartRateRepository>();
+ builder.Services.AddScoped<IHeartRateService, HeartRateService>();
+
 
 var app = builder.Build();
 
