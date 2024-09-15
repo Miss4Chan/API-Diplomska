@@ -7,13 +7,14 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers;
 
-[Authorize]
+//[Authorize]
 public class HeartRateController(IHeartRateService _heartRateService) : BaseApiController
 {
     [HttpPost("createHeartRate")]
     public async Task<ActionResult> CreateHeartRate([FromBody] HeartRateDto heartRateDto)
     {
-        var username = User.GetUsername();
+        //var username = User.GetUsername();
+        var username = "string"; // this is for testing purposes 
         await _heartRateService.CreateHeartRateAsync(heartRateDto, username);
         return Ok(new { message = "Heart rate recorded successfully." });
     }
@@ -21,7 +22,8 @@ public class HeartRateController(IHeartRateService _heartRateService) : BaseApiC
     [HttpPost("createHighHeartRate")]
     public async Task<ActionResult> CreateHighHeartRate([FromBody] HighHeartRateDto highHeartRateDto)
     {
-        var username = User.GetUsername();
+        //var username = User.GetUsername();
+        var username = "string"; // this is for testing purposes 
         await _heartRateService.CreateHighHeartRateAsync(highHeartRateDto, username);
         return Ok(new { message = "High heart rate recorded successfully." });
     }
@@ -29,8 +31,9 @@ public class HeartRateController(IHeartRateService _heartRateService) : BaseApiC
     [HttpGet("getRecentHeartRate")]
     public async Task<ActionResult> GetRecentHeartRate(DateTime from, DateTime to)
     {
-        var userId = User.GetUserId();
-        var heartRates = await _heartRateService.GetRecentHeartRateAsync(userId, from, to);
+        //var userId = User.GetUserId();
+        var username = "string"; // this is for testing purposes 
+        var heartRates = await _heartRateService.GetRecentHeartRateAsync(username, from, to);
         return Ok(heartRates);
     }
 }

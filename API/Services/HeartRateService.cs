@@ -47,9 +47,9 @@ public class HeartRateService(IHeartRateRepository _heartRateRepository, IUserRe
         await _heartRateRepository.CreateHighHeartRateAsync(highHeartRate);
     }
 
-    public async Task<IEnumerable<HeartRate>> GetRecentHeartRateAsync(int userId, DateTime from, DateTime to)
+    public async Task<IEnumerable<HeartRate>> GetRecentHeartRateAsync(string username, DateTime from, DateTime to)
     {
-        return await _heartRateRepository.GetRecentHeartRateAsync(userId, from, to);
+        return await _heartRateRepository.GetRecentHeartRateAsync(username, from, to);
     }
 }
 

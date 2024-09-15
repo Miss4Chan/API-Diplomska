@@ -8,6 +8,6 @@ public interface IHeartRateService
 {
     Task CreateHeartRateAsync(HeartRateDto heartRateDto, string username);
     Task CreateHighHeartRateAsync(HighHeartRateDto highHeartRateDto, string username);
-    Task<IEnumerable<HeartRate>> GetRecentHeartRateAsync(int userId, DateTime from, DateTime to);
+    Task<IEnumerable<HeartRate>> GetRecentHeartRateAsync(string username, DateTime from, DateTime to);
 }
 

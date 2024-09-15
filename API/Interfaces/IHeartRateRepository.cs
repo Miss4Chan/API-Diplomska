@@ -7,5 +7,5 @@ public interface IHeartRateRepository
 {
     Task CreateHeartRateAsync(HeartRate heartRate);
     Task CreateHighHeartRateAsync(HighHeartRate highHeartRate);
-    Task<IEnumerable<HeartRate>> GetRecentHeartRateAsync(int userId, DateTime from, DateTime to);
+    Task<IEnumerable<HeartRate>> GetRecentHeartRateAsync(string username, DateTime from, DateTime to);
 }

@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 namespace API.Controllers;
 
 
+//TODO: Return user dto 
 public class UsersController(DataContext context) : BaseApiController
 {
 

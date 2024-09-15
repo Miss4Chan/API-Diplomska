@@ -21,10 +21,12 @@ public class HeartRateRepository(DataContext _context): IHeartRateRepository
         await _context.SaveChangesAsync();
     }
 
-    public async Task<IEnumerable<HeartRate>> GetRecentHeartRateAsync(int userId, DateTime from, DateTime to)
+    public async Task<IEnumerable<HeartRate>> GetRecentHeartRateAsync(string username, DateTime from, DateTime to)
     {
+        var appuser = await _context.Users.Where(x => x.Username == username).FirstOrDefaultAsync();
+        if(appuser == null) return null;
         return await _context.HeartRates
-            .Where(hr => hr.UserId == userId && hr.Timestamp >= from && hr.Timestamp <= to)
+            .Where(hr => hr.UserId == appuser.Id && hr.Timestamp >= from && hr.Timestamp <= to)
             .ToListAsync();
     }
 }
