@@ -9,7 +9,7 @@ public class SuddenMovement
     public int MovementId { get; set; }
     public int UserId { get; set; }
     public DateTime Timestamp { get; set; }
-    public bool Confirmation { get; set; }
+    public bool? Confirm { get; set; }
     public DateTime? TimeOfConfirmation { get; set; }
 
     // Navigation properties

@@ -39,6 +39,7 @@ public class HeartRateService(IHeartRateRepository _heartRateRepository, IUserRe
         var highHeartRate = new HighHeartRate
         {
             Confirm = highHeartRateDto.Confirm,
+            Measurement = highHeartRateDto.Measurement,
             TimeOfConfirmation = highHeartRateDto.TimeOfConfirmation,
             Timestamp = highHeartRateDto.Timestamp,
             User = user

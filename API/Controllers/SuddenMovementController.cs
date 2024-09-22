@@ -1,14 +1,18 @@
-// using System;
-// using Microsoft.AspNetCore.Mvc;
+using System;
+using API.DTOs;
+using API.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 
-// namespace API.Controllers;
+namespace API.Controllers;
 
-// public class SuddenMovementController : BaseApiController
-// {
-//     [HttpPost("createSuddenMovement")]
-//     public async Task<ActionResult> CreateSuddenMovement([FromBody] SuddenMovementDTO suddenMovementDto)
-//     {
-//         await _medicationService.CreateSuddenMovementAsync(suddenMovementDto);
-//         return Ok(new { message = "Sudden movement recorded successfully." });
-//     }
-// }
+public class SuddenMovementController(ISuddenMovementService _suddenMovementService) : BaseApiController
+{
+    [HttpPost("createSuddenMovement")]
+    public async Task<ActionResult> CreateSuddenMovement([FromBody] SuddenMovementDto suddenMovementDto)
+    {
+        //var username = User.GetUsername();
+        var username = "string";
+        await _suddenMovementService.CreateSuddenMovementsync(suddenMovementDto, username);
+        return Ok(new { message = "Sudden movement recorded successfully." });
+    }
+}

@@ -7,6 +7,7 @@ public class HighHeartRate
 {
     [Key]
     public int HighHeartRateId { get; set; }
+    public double Measurement { get; set; }
     public int UserId { get; set; }
     public DateTime Timestamp { get; set; }
     public bool? Confirm { get; set; }

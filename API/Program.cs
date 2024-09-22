@@ -47,6 +47,9 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IHeartRateRepository, HeartRateRepository>();
 builder.Services.AddScoped<IHeartRateService, HeartRateService>();
 
+builder.Services.AddScoped<ISuddenMovementRepository, SuddenMovementRepository>();
+builder.Services.AddScoped<ISuddenMovementService, SuddenMovementService>();
+
 builder.WebHost.UseUrls("http://0.0.0.0:5008");
 
 builder.Services.AddSwaggerGen(c =>
