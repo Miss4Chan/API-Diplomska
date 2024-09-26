@@ -1,5 +1,6 @@
 using System;
 using API.DTOs;
+using API.Extensions;
 using API.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,8 +11,8 @@ public class SuddenMovementController(ISuddenMovementService _suddenMovementServ
     [HttpPost("createSuddenMovement")]
     public async Task<ActionResult> CreateSuddenMovement([FromBody] SuddenMovementDto suddenMovementDto)
     {
-        //var username = User.GetUsername();
-        var username = "string";
+        var username = User.GetUsername();
+        //var username = "string";
         await _suddenMovementService.CreateSuddenMovementsync(suddenMovementDto, username);
         return Ok(new { message = "Sudden movement recorded successfully." });
     }

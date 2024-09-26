@@ -24,7 +24,11 @@ public class AccountController(DataContext context, ITokenService tokenService) 
         {
             Username = registerDto.Username.ToLower(),
             PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(registerDto.Password)),
-            PasswordSalt = hmac.Key
+            PasswordSalt = hmac.Key,
+            DateOfBirth = registerDto.DateOfBirth,
+            FirstName = registerDto.FirstName,
+            LastName = registerDto.LastName,
+            Email = registerDto.Email
         };
         context.Users.Add(user);
         await context.SaveChangesAsync();
