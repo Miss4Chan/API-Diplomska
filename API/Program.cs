@@ -46,9 +46,13 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 builder.Services.AddScoped<IHeartRateRepository, HeartRateRepository>();
 builder.Services.AddScoped<IHeartRateService, HeartRateService>();
+builder.Services.AddScoped<IMedicationIntakeService, MedicationIntakeService>();
+builder.Services.AddScoped<IMedicationService, MedicationService>();
 
 builder.Services.AddScoped<ISuddenMovementRepository, SuddenMovementRepository>();
 builder.Services.AddScoped<ISuddenMovementService, SuddenMovementService>();
+builder.Services.AddScoped<IMedicationIntakeRepository, MedicationIntakeRepository>();
+builder.Services.AddScoped<IMedicationRepository, MedicationRepository>();
 
 builder.WebHost.UseUrls("http://0.0.0.0:5008");
 

@@ -10,7 +10,7 @@ public class MedicationIntake
     public int UserId { get; set; }
     public int MedicationId { get; set; }
     public bool Taken { get; set; }
-    public required string TypeOfMed { get; set; }
+    public required string Name { get; set; }
     public DateTime Timestamp { get; set; }
 
     // Navigation properties
