@@ -12,6 +12,8 @@ public class Medication
     public required string MedicationName { get; set; } // 
     public bool IsDeleted { get; set; }
 
+    //cloudve been a timespan??
+    public required TimeOnly TimeOfDay { get; set; } 
     // Navigation properties
     public required AppUser User { get; set; }
     public ICollection<MedicationIntake>? MedicationIntakes { get; set; }

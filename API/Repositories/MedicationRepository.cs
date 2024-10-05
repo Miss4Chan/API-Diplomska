@@ -32,15 +32,17 @@ public class MedicationRepository(DataContext _context) : IMedicationRepository
 
         // Filter for daily medications
         var dailyMeds = user.Medications
-            .Where(m => m.RepeatingPattern[todayIndex] == 1 && !m.IsDeleted) // Medications scheduled for today
-            .Where(m => m.MedicationIntakes == null || !m.MedicationIntakes.Any(mi => mi.Timestamp.Date == DateTime.Today)) // Filter out medications already taken today
-            .Select(m => new MedicationDto
-            {
-                MedicationId = m.MedicationId,
-                MedicationName = m.MedicationName,
-                RepeatingPattern = m.RepeatingPattern
-            })
-            .ToList();
+        .Where(m => m.RepeatingPattern[todayIndex] == 1 && !m.IsDeleted)
+        .Where(m => m.MedicationIntakes == null || !m.MedicationIntakes.Any(mi => mi.Timestamp.Date == DateTime.Today))
+        .Select(m => new MedicationDto
+        {
+            MedicationId = m.MedicationId,
+            MedicationName = m.MedicationName,
+            RepeatingPattern = m.RepeatingPattern,
+            TimeOfDay = m.TimeOfDay.ToString("HH:mm") // Convert TimeOnly to string
+        })
+        .ToList();
+
 
         return dailyMeds;
     }
@@ -69,7 +71,8 @@ public class MedicationRepository(DataContext _context) : IMedicationRepository
             {
                 MedicationId = m.MedicationId,
                 MedicationName = m.MedicationName,
-                RepeatingPattern = m.RepeatingPattern
+                RepeatingPattern = m.RepeatingPattern,
+                TimeOfDay = m.TimeOfDay.ToString("HH:mm")
             })
             .ToList();
 

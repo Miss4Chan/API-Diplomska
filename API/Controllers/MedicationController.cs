@@ -15,7 +15,7 @@ public class MedicationController(IMedicationService _medicationService) : BaseA
         await _medicationService.CreateMedicationAsync(medicationDto, username);
         return Ok(new { message = "Medication created successfully." });
     }
-    [HttpPost("deleteMedication/{medicationId}")]
+    [HttpDelete("deleteMedication/{medicationId}")]
     public async Task<ActionResult> SoftDeleteMedication(int medicationId)
     {
          var username = User.GetUsername();

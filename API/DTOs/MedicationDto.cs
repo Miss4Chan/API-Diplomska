@@ -9,4 +9,6 @@ public class MedicationDto
     public required string MedicationName { get; set; }
     public required List<int> RepeatingPattern { get; set; } 
     public bool IsDeleted { get; set; } 
+
+    public required string TimeOfDay { get; set; }
 }
